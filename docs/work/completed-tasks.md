@@ -27,3 +27,10 @@
 - **Completed:** 2026-08-13T03:45:50Z
 - **Files modified:** .env.example, src/lib/config.ts
 - **Commit:** `f6d83e60bc46f9105c509e952b923b0b268f1382`
+
+## T-005 (sprint 0)
+- **Description:** Docker Compose for local PostgreSQL
+- **Intent:** [INT-0001](../intents/INT-0001-project-foundation.md)
+- **Completed:** 2026-08-13T03:46:00Z
+- **Files modified:** docker-compose.yml
+- **Commit:** PENDING
