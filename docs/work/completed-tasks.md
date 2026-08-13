@@ -33,4 +33,4 @@
 - **Intent:** [INT-0001](../intents/INT-0001-project-foundation.md)
 - **Completed:** 2026-08-13T03:46:00Z
 - **Files modified:** docker-compose.yml
-- **Commit:** PENDING
+- **Commit:** `8ab509058fffebdc9709f8a70070729a0485b2c2`
