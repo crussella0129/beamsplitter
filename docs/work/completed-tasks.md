@@ -26,4 +26,4 @@
 - **Intent:** [INT-0001](../intents/INT-0001-project-foundation.md)
 - **Completed:** 2026-08-13T03:45:50Z
 - **Files modified:** .env.example, src/lib/config.ts
-- **Commit:** PENDING
+- **Commit:** `f6d83e60bc46f9105c509e952b923b0b268f1382`
