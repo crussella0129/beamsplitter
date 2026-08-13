@@ -8,4 +8,4 @@
 - [x] T-004: Environment configuration and API credential stubs — [INT-0001](../intents/INT-0001-project-foundation.md)
 - [x] T-005: Docker Compose for local PostgreSQL — [INT-0001](../intents/INT-0001-project-foundation.md)
 - [x] T-006: ESLint + Prettier configuration — [INT-0001](../intents/INT-0001-project-foundation.md)
-- [ ] T-007: Vitest setup with initial test — [INT-0001](../intents/INT-0001-project-foundation.md)
+- [x] T-007: Vitest setup with initial test — [INT-0001](../intents/INT-0001-project-foundation.md)
