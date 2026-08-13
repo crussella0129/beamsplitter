@@ -20,3 +20,10 @@
 - **Completed:** 2026-08-13T03:45:40Z
 - **Files modified:** prisma/schema.prisma, prisma.config.ts, src/lib/db.ts
 - **Commit:** `82ca03069134472f5f3d9e1e1f140faf8f966ff5`
+
+## T-004 (sprint 0)
+- **Description:** Environment configuration and API credential stubs
+- **Intent:** [INT-0001](../intents/INT-0001-project-foundation.md)
+- **Completed:** 2026-08-13T03:45:50Z
+- **Files modified:** .env.example, src/lib/config.ts
+- **Commit:** PENDING
