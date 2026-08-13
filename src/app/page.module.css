@@ -1,0 +1,227 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background orbs */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-primary);
+  top: -10%;
+  left: -10%;
+}
+
+.hero::after {
+  width: 400px;
+  height: 400px;
+  background: var(--accent-secondary);
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+.logoGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.logoIcon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: var(--shadow-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 80px var(--accent-primary-glow),
+      0 0 30px var(--accent-secondary-glow);
+  }
+}
+
+.logoIcon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  background: var(--gradient-hero);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin-top: 1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.platforms {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.platformBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition-base);
+  cursor: default;
+}
+
+.platformBadge:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.platformBadge svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 840px;
+  margin-top: 4rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.featureCard {
+  padding: 1.5rem;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-align: left;
+  transition: all var(--transition-base);
+}
+
+.featureCard:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.featureIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.featureTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.featureDesc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.footer {
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footerLink {
+  color: var(--accent-primary);
+  transition: color var(--transition-fast);
+}
+
+.footerLink:hover {
+  color: var(--accent-secondary);
+}
+
+@media (max-width: 600px) {
+  .platforms {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
