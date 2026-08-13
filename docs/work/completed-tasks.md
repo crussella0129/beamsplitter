@@ -13,3 +13,10 @@
 - **Completed:** 2026-08-13T03:45:30Z
 - **Files modified:** src/app/page.tsx, src/app/globals.css, src/app/page.module.css
 - **Commit:** `9d641fc39becd0bab4493f49a938b61c79e21c2d`
+
+## T-003 (sprint 0)
+- **Description:** Define Prisma schema with core data model
+- **Intent:** [INT-0001](../intents/INT-0001-project-foundation.md)
+- **Completed:** 2026-08-13T03:45:40Z
+- **Files modified:** prisma/schema.prisma, prisma.config.ts, src/lib/db.ts
+- **Commit:** PENDING

@@ -1,0 +1,108 @@
+// Prisma schema for beamsplitter
+// Cross-platform social media mirroring and engagement comparison
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// A registered beamsplitter user.
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  platformAccounts PlatformAccount[]
+  posts            Post[]
+}
+
+/// Supported social media platforms.
+enum Platform {
+  X
+  THREADS
+}
+
+/// A connected social media account for a user.
+model PlatformAccount {
+  id             String   @id @default(cuid())
+  platform       Platform
+  platformUserId String
+  displayName    String?
+  accessToken    String
+  refreshToken   String?
+  tokenExpiresAt DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([platform, platformUserId])
+  @@index([userId])
+}
+
+/// A mirrored post published to one or more platforms.
+model Post {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  /// Platform-specific post ID on X (null if not posted to X)
+  xPostId       String?
+  /// Platform-specific post ID on Threads (null if not posted to Threads)
+  threadsPostId String?
+
+  /// Publishing status per platform
+  xStatus       PublishStatus @default(PENDING)
+  threadsStatus PublishStatus @default(PENDING)
+
+  /// Error message if publishing failed
+  xError       String?
+  threadsError String?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  engagementSnapshots EngagementSnapshot[]
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+/// Publishing status for a post on a specific platform.
+enum PublishStatus {
+  PENDING
+  PUBLISHED
+  FAILED
+  SKIPPED
+}
+
+/// A point-in-time engagement metrics snapshot for a post on a specific platform.
+model EngagementSnapshot {
+  id        String   @id @default(cuid())
+  platform  Platform
+  capturedAt DateTime @default(now())
+
+  /// Normalized metrics (available on both platforms)
+  likes   Int @default(0)
+  replies Int @default(0)
+  reposts Int @default(0)
+  quotes  Int @default(0)
+
+  /// Platform-specific metrics as flexible JSON
+  /// X: { impressions, bookmarks, urlClicks }
+  /// Threads: { views, shares }
+  rawMetrics Json @default("{}")
+
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId, platform, capturedAt])
+  @@index([capturedAt])
+}
